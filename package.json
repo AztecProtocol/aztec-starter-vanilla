@@ -2,7 +2,7 @@
   "name": "@aztec/vanilla",
   "description": "Vanilla HTML/JS App",
   "private": true,
-  "version": "0.75.0-commit.b451b3b0dc7d4157f0d3e76f9a31b7776571a6c1",
+  "version": "0.75.0-commit.f346ba5978e7595060c6af2b4debfa3241b011ba",
   "type": "module",
   "scripts": {
     "compile": "cd src/contracts && ${AZTEC_NARGO:-aztec-nargo} compile --silence-warnings",
@@ -17,8 +17,8 @@
     "formatting:fix": "prettier -w ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "0.75.0-commit.b451b3b0dc7d4157f0d3e76f9a31b7776571a6c1",
-    "@aztec/aztec.js": "0.75.0-commit.b451b3b0dc7d4157f0d3e76f9a31b7776571a6c1"
+    "@aztec/accounts": "0.75.0-commit.f346ba5978e7595060c6af2b4debfa3241b011ba",
+    "@aztec/aztec.js": "0.75.0-commit.f346ba5978e7595060c6af2b4debfa3241b011ba"
   },
   "devDependencies": {
     "@playwright/test": "1.49.0",
