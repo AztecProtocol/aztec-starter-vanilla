@@ -1,7 +1,7 @@
 {
   "name": "aztec-example-vanilla",
   "private": true,
-  "version": "3.0.0-rc.3",
+  "version": "3.0.0-rc.4",
   "type": "module",
   "engines": {
     "node": ">=22.0.0"
@@ -22,19 +22,19 @@
     "lint": "prettier --check ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "3.0.0-rc.3",
-    "@aztec/aztec.js": "3.0.0-rc.3",
-    "@aztec/constants": "3.0.0-rc.3",
-    "@aztec/entrypoints": "3.0.0-rc.3",
-    "@aztec/foundation": "3.0.0-rc.3",
-    "@aztec/kv-store": "3.0.0-rc.3",
-    "@aztec/noir-contracts.js": "3.0.0-rc.3",
-    "@aztec/pxe": "3.0.0-rc.3",
-    "@aztec/stdlib": "3.0.0-rc.3",
-    "@aztec/wallet-sdk": "3.0.0-rc.3"
+    "@aztec/accounts": "3.0.0-rc.4",
+    "@aztec/aztec.js": "3.0.0-rc.4",
+    "@aztec/constants": "3.0.0-rc.4",
+    "@aztec/entrypoints": "3.0.0-rc.4",
+    "@aztec/foundation": "3.0.0-rc.4",
+    "@aztec/kv-store": "3.0.0-rc.4",
+    "@aztec/noir-contracts.js": "3.0.0-rc.4",
+    "@aztec/pxe": "3.0.0-rc.4",
+    "@aztec/stdlib": "3.0.0-rc.4",
+    "@aztec/wallet-sdk": "3.0.0-rc.4"
   },
   "devDependencies": {
-    "@aztec/test-wallet": "3.0.0-rc.3",
+    "@aztec/test-wallet": "3.0.0-rc.4",
     "@playwright/test": "1.49.0",
     "@types/node": "^22.15.17",
     "buffer": "^6.0.3",
