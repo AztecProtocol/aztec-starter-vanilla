@@ -1,40 +1,34 @@
 {
   "name": "aztec-example-vanilla",
   "private": true,
-  "version": "0.0.1-commit.6c91f13",
+  "version": "0.0.1-commit.96bb3f7",
   "type": "module",
   "engines": {
-    "node": ">=22.0.0"
+    "node": ">=24.0.0"
   },
   "scripts": {
-    "clean": "rm -rf app/dist contracts/target contracts/codegenCache.json",
-    "compile-contracts": "cd contracts && CONTAINER_NAME=\"aztec-vanilla-box\" ${AZTEC:-aztec} compile",
-    "codegen-contracts": "cd contracts && CONTAINER_NAME=\"aztec-vanilla-box\" ${AZTEC:-aztec} codegen ./target -o ./target",
-    "copy-artifacts": "mkdir -p artifacts && cp contracts/target/*.json contracts/target/*.ts ./artifacts",
-    "build-contracts": "yarn clean && yarn compile-contracts && yarn codegen-contracts && yarn copy-artifacts",
-    "deploy-contracts": "node --experimental-transform-types scripts/deploy.ts",
-    "dev": "webpack serve --mode development",
-    "build-app": "webpack --mode production",
-    "build": "yarn build-contracts && yarn build-app",
+    "build": "yarn clean && yarn compile && yarn codegen && webpack --mode production",
+    "clean": "rm -rf artifacts dist contracts/target contracts/codegenCache.json && mkdir -p artifacts",
+    "compile": "cd contracts && ${AZTEC:-aztec} compile && cp target/*.json ../artifacts",
+    "codegen": "cd contracts && ${AZTEC:-aztec} codegen ./target -o ./target && cp target/*.ts ../artifacts",
     "serve": "webpack serve --mode production --port ${PORT:-3000}",
-    "prep-test": "PROVER_ENABLED=false yarn deploy-contracts && yarn build-app",
-    "test": "yarn prep-test && yarn playwright test",
+    "test": "PROVER_ENABLED=false node --experimental-transform-types scripts/deploy.ts && yarn playwright test",
     "lint": "prettier --check ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "0.0.1-commit.6c91f13",
-    "@aztec/aztec.js": "0.0.1-commit.6c91f13",
-    "@aztec/constants": "0.0.1-commit.6c91f13",
-    "@aztec/entrypoints": "0.0.1-commit.6c91f13",
-    "@aztec/foundation": "0.0.1-commit.6c91f13",
-    "@aztec/kv-store": "0.0.1-commit.6c91f13",
-    "@aztec/noir-contracts.js": "0.0.1-commit.6c91f13",
-    "@aztec/pxe": "0.0.1-commit.6c91f13",
-    "@aztec/stdlib": "0.0.1-commit.6c91f13",
-    "@aztec/wallet-sdk": "0.0.1-commit.6c91f13"
+    "@aztec/accounts": "0.0.1-commit.96bb3f7",
+    "@aztec/aztec.js": "0.0.1-commit.96bb3f7",
+    "@aztec/constants": "0.0.1-commit.96bb3f7",
+    "@aztec/entrypoints": "0.0.1-commit.96bb3f7",
+    "@aztec/foundation": "0.0.1-commit.96bb3f7",
+    "@aztec/kv-store": "0.0.1-commit.96bb3f7",
+    "@aztec/noir-contracts.js": "0.0.1-commit.96bb3f7",
+    "@aztec/pxe": "0.0.1-commit.96bb3f7",
+    "@aztec/stdlib": "0.0.1-commit.96bb3f7",
+    "@aztec/wallet-sdk": "0.0.1-commit.96bb3f7"
   },
   "devDependencies": {
-    "@aztec/test-wallet": "0.0.1-commit.6c91f13",
+    "@aztec/test-wallet": "0.0.1-commit.96bb3f7",
     "@playwright/test": "1.49.0",
     "@types/node": "^22.15.17",
     "buffer": "^6.0.3",
