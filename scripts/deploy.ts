@@ -3,16 +3,12 @@ import {
   type ContractInstanceWithAddress,
   DeployMethod,
   getContractInstanceFromInstantiationParams,
-  InteractionWaitOptions,
 } from '@aztec/aztec.js/contracts';
 import { SponsoredFeePaymentMethod } from '@aztec/aztec.js/fee';
 import { Fr } from '@aztec/aztec.js/fields';
 import { PublicKeys } from '@aztec/aztec.js/keys';
 import { createAztecNodeClient } from '@aztec/aztec.js/node';
-import type {
-  DeployAccountOptions,
-  Wallet,
-} from '@aztec/aztec.js/wallet';
+import type { DeployAccountOptions, Wallet } from '@aztec/aztec.js/wallet';
 import { type AztecNode } from '@aztec/aztec.js/node';
 import { SPONSORED_FPC_SALT } from '@aztec/constants';
 import { createStore } from '@aztec/kv-store/lmdb';
@@ -72,7 +68,7 @@ async function createAccount(wallet: TestWallet) {
 
   const deployMethod = await accountManager.getDeployMethod();
   const sponsoredPFCContract = await getSponsoredPFCContract();
-  const deployOpts: DeployAccountOptions<InteractionWaitOptions> = {
+  const deployOpts: DeployAccountOptions = {
     from: AztecAddress.ZERO,
     fee: {
       paymentMethod: new SponsoredFeePaymentMethod(
@@ -81,9 +77,8 @@ async function createAccount(wallet: TestWallet) {
     },
     skipClassPublication: true,
     skipInstancePublication: true,
-    wait: { timeout: 120 },
   };
-  await deployMethod.send(deployOpts);
+  await deployMethod.send(deployOpts).wait({ timeout: 120 });
 
   return accountManager.address;
 }
@@ -115,16 +110,17 @@ async function deployContract(wallet: Wallet, deployer: AztecAddress) {
 
   const sponsoredPFCContract = await getSponsoredPFCContract();
 
-  await deployMethod.send({
-    from: deployer,
-    contractAddressSalt: salt,
-    fee: {
-      paymentMethod: new SponsoredFeePaymentMethod(
-        sponsoredPFCContract.address
-      ),
-    },
-    wait: { timeout: 120 },
-  });
+  await deployMethod
+    .send({
+      from: deployer,
+      contractAddressSalt: salt,
+      fee: {
+        paymentMethod: new SponsoredFeePaymentMethod(
+          sponsoredPFCContract.address
+        ),
+      },
+    })
+    .wait({ timeout: 120 });
   await wallet.registerContract(contract, PrivateVotingContract.artifact);
 
   return {
