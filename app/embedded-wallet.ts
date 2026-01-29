@@ -1,9 +1,6 @@
 import { Account, SignerlessAccount } from '@aztec/aztec.js/account';
 import { AztecAddress } from '@aztec/aztec.js/addresses';
-import {
-  getContractInstanceFromInstantiationParams,
-  InteractionWaitOptions,
-} from '@aztec/aztec.js/contracts';
+import { getContractInstanceFromInstantiationParams } from '@aztec/aztec.js/contracts';
 import { SponsoredFeePaymentMethod } from '@aztec/aztec.js/fee';
 import { Fr } from '@aztec/aztec.js/fields';
 import { createLogger } from '@aztec/aztec.js/log';
@@ -125,7 +122,9 @@ export class EmbeddedWallet extends BaseWallet {
     const config = getPXEConfig();
     config.l1Contracts = await aztecNode.getL1ContractAddresses();
     config.proverEnabled = PROVER_ENABLED;
-    const pxe = await createPXE(aztecNode, config, {});
+    const pxe = await createPXE(aztecNode, config, {
+      useLogSuffix: true,
+    });
 
     // Register Sponsored FPC Contract with PXE
     await pxe.registerContract(await EmbeddedWallet.#getSponsoredPFCContract());
@@ -219,7 +218,7 @@ export class EmbeddedWallet extends BaseWallet {
     const deployMethod = await accountManager.getDeployMethod();
     const sponsoredPFCContract =
       await EmbeddedWallet.#getSponsoredPFCContract();
-    const deployOpts: DeployAccountOptions<InteractionWaitOptions> = {
+    const deployOpts: DeployAccountOptions = {
       from: AztecAddress.ZERO,
       fee: {
         paymentMethod: new SponsoredFeePaymentMethod(
@@ -228,10 +227,9 @@ export class EmbeddedWallet extends BaseWallet {
       },
       skipClassPublication: true,
       skipInstancePublication: true,
-      wait: { timeout: 120 },
     };
 
-    const receipt = await deployMethod.send(deployOpts);
+    const receipt = await deployMethod.send(deployOpts).wait({ timeout: 120 });
 
     logger.info('Account deployed', receipt);
 

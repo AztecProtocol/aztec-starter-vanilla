@@ -155,7 +155,8 @@ voteButton.addEventListener('click', async (e) => {
     // Send tx
     await votingContract.methods
       .cast_vote(candidate)
-      .send({ from: connectedAccount });
+      .send({ from: connectedAccount })
+      .wait();
 
     // Update tally
     displayStatusMessage('Updating vote tally...');
