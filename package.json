@@ -1,7 +1,7 @@
 {
   "name": "aztec-example-vanilla",
   "private": true,
-  "version": "0.0.1-commit.f2ce05ee",
+  "version": "0.0.1-commit.87a0206",
   "type": "module",
   "engines": {
     "node": ">=24.0.0"
@@ -16,19 +16,19 @@
     "lint": "prettier --check ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "0.0.1-commit.f2ce05ee",
-    "@aztec/aztec.js": "0.0.1-commit.f2ce05ee",
-    "@aztec/constants": "0.0.1-commit.f2ce05ee",
-    "@aztec/entrypoints": "0.0.1-commit.f2ce05ee",
-    "@aztec/foundation": "0.0.1-commit.f2ce05ee",
-    "@aztec/kv-store": "0.0.1-commit.f2ce05ee",
-    "@aztec/noir-contracts.js": "0.0.1-commit.f2ce05ee",
-    "@aztec/pxe": "0.0.1-commit.f2ce05ee",
-    "@aztec/stdlib": "0.0.1-commit.f2ce05ee",
-    "@aztec/wallet-sdk": "0.0.1-commit.f2ce05ee"
+    "@aztec/accounts": "0.0.1-commit.87a0206",
+    "@aztec/aztec.js": "0.0.1-commit.87a0206",
+    "@aztec/constants": "0.0.1-commit.87a0206",
+    "@aztec/entrypoints": "0.0.1-commit.87a0206",
+    "@aztec/foundation": "0.0.1-commit.87a0206",
+    "@aztec/kv-store": "0.0.1-commit.87a0206",
+    "@aztec/noir-contracts.js": "0.0.1-commit.87a0206",
+    "@aztec/pxe": "0.0.1-commit.87a0206",
+    "@aztec/stdlib": "0.0.1-commit.87a0206",
+    "@aztec/wallet-sdk": "0.0.1-commit.87a0206"
   },
   "devDependencies": {
-    "@aztec/test-wallet": "0.0.1-commit.f2ce05ee",
+    "@aztec/test-wallet": "0.0.1-commit.87a0206",
     "@playwright/test": "1.49.0",
     "@types/node": "^22.15.17",
     "buffer": "^6.0.3",
