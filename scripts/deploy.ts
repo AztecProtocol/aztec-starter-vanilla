@@ -12,19 +12,35 @@ import { createAztecNodeClient } from '@aztec/aztec.js/node';
 import type { DeployAccountOptions, Wallet } from '@aztec/aztec.js/wallet';
 import { type AztecNode } from '@aztec/aztec.js/node';
 import { SPONSORED_FPC_SALT } from '@aztec/constants';
+import { createStore } from '@aztec/kv-store/lmdb';
 import { SponsoredFPCContractArtifact } from '@aztec/noir-contracts.js/SponsoredFPC';
+import { getPXEConfig, PXE_DATA_SCHEMA_VERSION } from '@aztec/pxe/server';
 import { getDefaultInitializer } from '@aztec/stdlib/abi';
-import { EmbeddedWallet } from '@aztec/wallets/embedded';
+import { TestWallet } from '@aztec/test-wallet/server';
 import fs from 'fs';
 import path from 'path';
 // @ts-ignore
 import { PrivateVotingContract } from '../artifacts/PrivateVoting.ts';
 
 const AZTEC_NODE_URL = process.env.AZTEC_NODE_URL || 'http://localhost:8080';
+const PROVER_ENABLED = process.env.PROVER_ENABLED === 'false' ? false : true;
 const WRITE_ENV_FILE = process.env.WRITE_ENV_FILE === 'false' ? false : true;
 
+const PXE_STORE_DIR = path.join(import.meta.dirname, '.store');
+
 async function setupWallet(aztecNode: AztecNode) {
-  return await EmbeddedWallet.create(aztecNode, { ephemeral: true });
+  fs.rmSync(PXE_STORE_DIR, { recursive: true, force: true });
+
+  const store = await createStore('pxe', {
+    dataDirectory: PXE_STORE_DIR,
+    dataStoreMapSizeKb: 1e6,
+  }, PXE_DATA_SCHEMA_VERSION);
+
+  const config = getPXEConfig();
+  config.dataDirectory = 'pxe';
+  config.proverEnabled = PROVER_ENABLED;
+
+  return await TestWallet.create(aztecNode, config, { store });
 }
 
 async function getSponsoredPFCContract() {
@@ -38,7 +54,7 @@ async function getSponsoredPFCContract() {
   return instance;
 }
 
-async function createAccount(wallet: EmbeddedWallet) {
+async function createAccount(wallet: TestWallet) {
   const salt = Fr.random();
   const secretKey = Fr.random();
   const signingKey = Buffer.alloc(32, Fr.random().toBuffer());
@@ -153,6 +169,9 @@ async function createAccountAndDeployContract() {
   if (WRITE_ENV_FILE) {
     await writeEnvFile(deploymentInfo);
   }
+
+  // Clean up the PXE store
+  fs.rmSync(PXE_STORE_DIR, { recursive: true, force: true });
 }
 
 createAccountAndDeployContract().catch((error) => {
