@@ -1,7 +1,7 @@
 {
   "name": "aztec-example-vanilla",
   "private": true,
-  "version": "4.0.0-spartan.20260217",
+  "version": "4.0.0-spartan.20260218",
   "type": "module",
   "engines": {
     "node": ">=24.0.0"
@@ -12,23 +12,24 @@
     "compile": "cd contracts && ${AZTEC:-aztec} compile && cp target/*.json ../artifacts",
     "codegen": "cd contracts && ${AZTEC:-aztec} codegen ./target -o ./target && cp target/*.ts ../artifacts",
     "serve": "webpack serve --mode production --port ${PORT:-3000}",
-    "test": "PROVER_ENABLED=false node --experimental-transform-types scripts/deploy.ts && yarn playwright test",
+    "deploy": "node --experimental-transform-types scripts/deploy.ts",
+    "test": "yarn deploy && yarn playwright test",
     "lint": "prettier --check ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "4.0.0-spartan.20260217",
-    "@aztec/aztec.js": "4.0.0-spartan.20260217",
-    "@aztec/constants": "4.0.0-spartan.20260217",
-    "@aztec/entrypoints": "4.0.0-spartan.20260217",
-    "@aztec/foundation": "4.0.0-spartan.20260217",
-    "@aztec/kv-store": "4.0.0-spartan.20260217",
-    "@aztec/noir-contracts.js": "4.0.0-spartan.20260217",
-    "@aztec/pxe": "4.0.0-spartan.20260217",
-    "@aztec/stdlib": "4.0.0-spartan.20260217",
-    "@aztec/wallet-sdk": "4.0.0-spartan.20260217"
+    "@aztec/accounts": "4.0.0-spartan.20260218",
+    "@aztec/aztec.js": "4.0.0-spartan.20260218",
+    "@aztec/constants": "4.0.0-spartan.20260218",
+    "@aztec/entrypoints": "4.0.0-spartan.20260218",
+    "@aztec/foundation": "4.0.0-spartan.20260218",
+    "@aztec/kv-store": "4.0.0-spartan.20260218",
+    "@aztec/noir-contracts.js": "4.0.0-spartan.20260218",
+    "@aztec/pxe": "4.0.0-spartan.20260218",
+    "@aztec/stdlib": "4.0.0-spartan.20260218",
+    "@aztec/wallet-sdk": "4.0.0-spartan.20260218",
+    "@aztec/wallets": "4.0.0-spartan.20260218"
   },
   "devDependencies": {
-    "@aztec/wallets": "4.0.0-spartan.20260217",
     "@playwright/test": "1.49.0",
     "@types/node": "^22.15.17",
     "buffer": "^6.0.3",
