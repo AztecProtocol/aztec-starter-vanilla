@@ -1,7 +1,7 @@
 {
   "name": "aztec-example-vanilla",
   "private": true,
-  "version": "4.0.0-devnet.3-patch.0",
+  "version": "4.0.0-devnet.3-patch.1",
   "type": "module",
   "engines": {
     "node": ">=24.0.0"
@@ -17,17 +17,17 @@
     "lint": "prettier --check ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "4.0.0-devnet.3-patch.0",
-    "@aztec/aztec.js": "4.0.0-devnet.3-patch.0",
-    "@aztec/constants": "4.0.0-devnet.3-patch.0",
-    "@aztec/entrypoints": "4.0.0-devnet.3-patch.0",
-    "@aztec/foundation": "4.0.0-devnet.3-patch.0",
-    "@aztec/kv-store": "4.0.0-devnet.3-patch.0",
-    "@aztec/noir-contracts.js": "4.0.0-devnet.3-patch.0",
-    "@aztec/pxe": "4.0.0-devnet.3-patch.0",
-    "@aztec/stdlib": "4.0.0-devnet.3-patch.0",
-    "@aztec/wallet-sdk": "4.0.0-devnet.3-patch.0",
-    "@aztec/wallets": "4.0.0-devnet.3-patch.0"
+    "@aztec/accounts": "4.0.0-devnet.3-patch.1",
+    "@aztec/aztec.js": "4.0.0-devnet.3-patch.1",
+    "@aztec/constants": "4.0.0-devnet.3-patch.1",
+    "@aztec/entrypoints": "4.0.0-devnet.3-patch.1",
+    "@aztec/foundation": "4.0.0-devnet.3-patch.1",
+    "@aztec/kv-store": "4.0.0-devnet.3-patch.1",
+    "@aztec/noir-contracts.js": "4.0.0-devnet.3-patch.1",
+    "@aztec/pxe": "4.0.0-devnet.3-patch.1",
+    "@aztec/stdlib": "4.0.0-devnet.3-patch.1",
+    "@aztec/wallet-sdk": "4.0.0-devnet.3-patch.1",
+    "@aztec/wallets": "4.0.0-devnet.3-patch.1"
   },
   "devDependencies": {
     "@playwright/test": "1.49.0",
