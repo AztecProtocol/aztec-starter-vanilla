@@ -1,7 +1,7 @@
 {
   "name": "aztec-example-vanilla",
   "private": true,
-  "version": "5.0.0-private.20260319",
+  "version": "0.0.1-private.3d175340d2",
   "type": "module",
   "engines": {
     "node": ">=24.0.0"
@@ -17,17 +17,17 @@
     "lint": "prettier --check ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "5.0.0-private.20260319",
-    "@aztec/aztec.js": "5.0.0-private.20260319",
-    "@aztec/constants": "5.0.0-private.20260319",
-    "@aztec/entrypoints": "5.0.0-private.20260319",
-    "@aztec/foundation": "5.0.0-private.20260319",
-    "@aztec/kv-store": "5.0.0-private.20260319",
-    "@aztec/noir-contracts.js": "5.0.0-private.20260319",
-    "@aztec/pxe": "5.0.0-private.20260319",
-    "@aztec/stdlib": "5.0.0-private.20260319",
-    "@aztec/wallet-sdk": "5.0.0-private.20260319",
-    "@aztec/wallets": "5.0.0-private.20260319"
+    "@aztec/accounts": "0.0.1-private.3d175340d2",
+    "@aztec/aztec.js": "0.0.1-private.3d175340d2",
+    "@aztec/constants": "0.0.1-private.3d175340d2",
+    "@aztec/entrypoints": "0.0.1-private.3d175340d2",
+    "@aztec/foundation": "0.0.1-private.3d175340d2",
+    "@aztec/kv-store": "0.0.1-private.3d175340d2",
+    "@aztec/noir-contracts.js": "0.0.1-private.3d175340d2",
+    "@aztec/pxe": "0.0.1-private.3d175340d2",
+    "@aztec/stdlib": "0.0.1-private.3d175340d2",
+    "@aztec/wallet-sdk": "0.0.1-private.3d175340d2",
+    "@aztec/wallets": "0.0.1-private.3d175340d2"
   },
   "devDependencies": {
     "@playwright/test": "1.49.0",
