@@ -1,7 +1,7 @@
 {
   "name": "aztec-example-vanilla",
   "private": true,
-  "version": "5.3.0-nightly.20260902",
+  "version": "5.3.0-nightly.20260903",
   "type": "module",
   "engines": {
     "node": ">=24.0.0"
@@ -17,17 +17,17 @@
     "lint": "prettier --check ./src"
   },
   "dependencies": {
-    "@aztec/accounts": "5.3.0-nightly.20260902",
-    "@aztec/aztec.js": "5.3.0-nightly.20260902",
-    "@aztec/constants": "5.3.0-nightly.20260902",
-    "@aztec/entrypoints": "5.3.0-nightly.20260902",
-    "@aztec/foundation": "5.3.0-nightly.20260902",
-    "@aztec/kv-store": "5.3.0-nightly.20260902",
-    "@aztec/noir-contracts.js": "5.3.0-nightly.20260902",
-    "@aztec/pxe": "5.3.0-nightly.20260902",
-    "@aztec/stdlib": "5.3.0-nightly.20260902",
-    "@aztec/wallet-sdk": "5.3.0-nightly.20260902",
-    "@aztec/wallets": "5.3.0-nightly.20260902"
+    "@aztec/accounts": "5.3.0-nightly.20260903",
+    "@aztec/aztec.js": "5.3.0-nightly.20260903",
+    "@aztec/constants": "5.3.0-nightly.20260903",
+    "@aztec/entrypoints": "5.3.0-nightly.20260903",
+    "@aztec/foundation": "5.3.0-nightly.20260903",
+    "@aztec/kv-store": "5.3.0-nightly.20260903",
+    "@aztec/noir-contracts.js": "5.3.0-nightly.20260903",
+    "@aztec/pxe": "5.3.0-nightly.20260903",
+    "@aztec/stdlib": "5.3.0-nightly.20260903",
+    "@aztec/wallet-sdk": "5.3.0-nightly.20260903",
+    "@aztec/wallets": "5.3.0-nightly.20260903"
   },
   "devDependencies": {
     "@playwright/test": "1.49.0",
